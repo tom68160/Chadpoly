@@ -1,10 +1,10 @@
-# Capitale
+# CHADPOLY
 
 Jeu de plateau immobilier qui se joue dans le navigateur : achetez des rues, construisez maisons et hôtels, échangez avec vos adversaires et ruinez-les. De 2 à 6 joueurs, humains (sur le même écran) ou contrôlés par l’ordinateur.
 
 Aucune dépendance, aucune compilation : du HTML, du CSS et du JavaScript (modules ES).
 
-![Capitale](docs/apercu.png)
+![CHADPOLY](docs/apercu.png)
 
 ## Jouer
 
@@ -65,7 +65,7 @@ Créez un dépôt **vide** sur <https://github.com/new> (sans README ni licence)
 ```bash
 git init
 git add .
-git commit -m "Premier commit : jeu Capitale"
+git commit -m "Premier commit : jeu CHADPOLY"
 git branch -M main
 git remote add origin https://github.com/tom68160/monopoly.git
 git push -u origin main
@@ -73,4 +73,4 @@ git push -u origin main
 
 ## Licence
 
-MIT. Capitale est un jeu original inspiré des jeux de plateau immobiliers classiques ; il n’est affilié à aucune marque.
+MIT. CHADPOLY est un jeu original inspiré des jeux de plateau immobiliers classiques ; il n’est affilié à aucune marque.

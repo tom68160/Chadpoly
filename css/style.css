@@ -159,7 +159,7 @@ button, select, input { font: inherit; }
   margin: 0;
   font-family: var(--font-display);
   font-weight: 800;
-  font-size: 9.5cqw;
+  font-size: 8.4cqw;
   letter-spacing: -0.03em;
   line-height: .9;
   color: var(--table);

@@ -3,7 +3,7 @@ import { Game } from './game.js';
 import { botStep, botAcceptsTrade } from './bot.js';
 import { BOARD, GROUPS, PLAYER_COLORS, JAIL_FINE } from './data.js';
 
-const SAVE_KEY = 'capitale.save.v1';
+const SAVE_KEY = 'chadpoly.save.v1';
 const $ = (sel) => document.querySelector(sel);
 const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const euro = (n) => `${Math.round(n).toLocaleString('fr-FR')} €`;
