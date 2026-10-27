@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Capitale — jeu de plateau immobilier</title>
+  <meta name="description" content="Achetez des rues, construisez des maisons et ruinez vos adversaires. Jeu de plateau en local, de 2 à 6 joueurs, contre des amis ou l’ordinateur.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%2314365c'/><path d='M8 24V14l8-6 8 6v10h-6v-6h-4v6z' fill='%23e2b13c'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main class="table">
+    <section class="board-wrap" aria-label="Plateau de jeu">
+      <div id="board" class="board">
+        <div class="center">
+          <h1 class="title">Capitale</h1>
+          <p class="turn-info" id="turnInfo" aria-live="polite"></p>
+          <div class="dice" id="dice" aria-label="Dés">
+            <span class="die" data-v="1"></span><span class="die" data-v="1"></span>
+          </div>
+          <div class="message" id="message" aria-live="polite"></div>
+          <div class="actions" id="actions"></div>
+        </div>
+      </div>
+    </section>
+
+    <aside class="side">
+      <header class="side-head">
+        <button class="btn ghost" id="newGameBtn" type="button">Nouvelle partie</button>
+        <button class="btn ghost" id="rulesBtn" type="button">Règles</button>
+      </header>
+      <section aria-label="Joueurs" id="players" class="players"></section>
+      <section class="log-wrap" aria-label="Journal de la partie">
+        <h2>Journal</h2>
+        <ol id="log" class="log"></ol>
+      </section>
+    </aside>
+  </main>
+
+  <!-- Configuration de la partie -->
+  <dialog id="setupDialog" class="dialog setup">
+    <form method="dialog" id="setupForm">
+      <h2 class="dialog-title">Nouvelle partie</h2>
+      <p class="hint">De 2 à 6 joueurs. Chacun commence avec 1 500 €.</p>
+      <div id="setupPlayers" class="setup-players"></div>
+      <div class="row">
+        <button type="button" class="btn ghost" id="addPlayer">Ajouter un joueur</button>
+      </div>
+      <label class="field">
+        <span>Durée</span>
+        <select id="maxTurns">
+          <option value="0">Jusqu’à la faillite de tous les adversaires</option>
+          <option value="30">30 tours, le plus riche gagne</option>
+          <option value="50">50 tours, le plus riche gagne</option>
+          <option value="80">80 tours, le plus riche gagne</option>
+        </select>
+      </label>
+      <label class="field">
+        <span>Vitesse de l’ordinateur</span>
+        <select id="botSpeed">
+          <option value="900">Posée</option>
+          <option value="450" selected>Normale</option>
+          <option value="120">Rapide</option>
+        </select>
+      </label>
+      <div class="dialog-actions">
+        <button type="button" class="btn ghost" id="resumeBtn" hidden>Reprendre la partie en cours</button>
+        <button type="submit" class="btn primary" value="start">Commencer</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- Fiche de propriété -->
+  <dialog id="propDialog" class="dialog prop">
+    <div id="propContent"></div>
+  </dialog>
+
+  <!-- Échange -->
+  <dialog id="tradeDialog" class="dialog trade">
+    <div id="tradeContent"></div>
+  </dialog>
+
+  <!-- Règles -->
+  <dialog id="rulesDialog" class="dialog rules">
+    <h2 class="dialog-title">Règles</h2>
+    <ul>
+      <li>Lancez les dés, avancez, et achetez les rues, gares et compagnies libres sur lesquelles vous tombez.</li>
+      <li>Un adversaire qui s’arrête chez vous paie un loyer. Possédez toute une couleur pour doubler le loyer et construire.</li>
+      <li>Construisez de façon homogène : une maison sur chaque terrain de la couleur avant d’en ajouter une deuxième. Cinq niveaux = un hôtel.</li>
+      <li>Un double vous fait rejouer. Trois doubles de suite vous envoient en prison.</li>
+      <li>En prison : faites un double, payez 50 € ou utilisez une carte. Au troisième échec, vous payez 50 € et sortez.</li>
+      <li>Passer par la case Départ rapporte 200 €.</li>
+      <li>À court d’argent ? Vendez des bâtiments (moitié prix) ou hypothéquez (moitié du prix d’achat). Lever une hypothèque coûte 10 % de plus.</li>
+      <li>Échangez des propriétés et de l’argent avec les autres joueurs pendant votre tour.</li>
+      <li>Si vous ne pouvez plus payer, c’est la faillite : vos biens vont à votre créancier.</li>
+    </ul>
+    <p class="hint">Cliquez sur une case du plateau pour voir sa fiche. La partie est sauvegardée automatiquement dans ce navigateur.</p>
+    <form method="dialog" class="dialog-actions"><button class="btn primary">Compris</button></form>
+  </dialog>
+
+  <script type="module" src="js/ui.js"></script>
+</body>
+</html>

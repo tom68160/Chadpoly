@@ -1,0 +1,12 @@
+{
+  "name": "capitale",
+  "version": "1.0.0",
+  "description": "Jeu de plateau immobilier dans le navigateur — HTML, CSS et JavaScript sans dépendance.",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "start": "npx --yes serve .",
+    "test": "node --test test/*.test.js"
+  },
+  "license": "MIT"
+}
