@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>CHADPOLY — bannière</title>
+<!-- Source de docs/banniere.png (1280×640). Ouvrir dans un navigateur et capturer à 1280×640 pour la régénérer. -->
+<style>
+  :root {
+    --table: #14365c; --deep: #0e2744; --paper: #eef3f4; --paper-2: #dfe8ea;
+    --ink: #1e2a38; --gold: #e2b13c;
+  }
+  * { box-sizing: border-box; margin: 0; }
+  body { width: 1280px; height: 640px; overflow: hidden; background: var(--deep); }
+  .banner {
+    position: relative; width: 1280px; height: 640px; overflow: hidden;
+    background:
+      radial-gradient(circle at 22% 30%, #1d4a7c 0, transparent 55%),
+      linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px) 0 0 / 40px 40px,
+      linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px) 0 0 / 40px 40px,
+      var(--table);
+    font-family: 'Inter Display', 'Bricolage Grotesque', 'Inter', sans-serif;
+    color: var(--paper);
+  }
+
+  /* ---- Plateau en perspective ---- */
+  .scene { position: absolute; right: -170px; top: -40px; width: 860px; height: 860px; perspective: 1500px; }
+  .board {
+    position: absolute; inset: 0;
+    transform: rotateX(52deg) rotateZ(-34deg) translate(40px, -10px);
+    transform-style: preserve-3d;
+    background: var(--paper);
+    border: 4px solid var(--ink);
+    box-shadow: 0 0 0 18px var(--deep), 0 60px 90px rgba(0,0,0,.6);
+    display: grid;
+    grid-template-columns: 1.55fr repeat(5, 1fr);
+    grid-template-rows: 1.55fr repeat(5, 1fr);
+  }
+  .sq { border: 2px solid var(--ink); margin: -1px; position: relative; background: var(--paper); display: flex; flex-direction: column; }
+  .sq .band { height: 24%; border-bottom: 2px solid var(--ink); display: flex; align-items: center; justify-content: center; gap: 5px; }
+  .sq.v { flex-direction: row-reverse; }
+  .sq.v .band { height: auto; width: 24%; border-bottom: 0; border-left: 2px solid var(--ink); flex-direction: column; }
+  .corner { display: grid; place-items: center; font-weight: 900; color: var(--ink); font-size: 30px; text-align: center; line-height: 1; }
+  .corner small { display: block; font-size: 17px; font-weight: 700; margin-top: 6px; }
+  .center {
+    grid-area: 2 / 2 / 7 / 7; border: 2px solid var(--ink); margin: -1px;
+    background:
+      linear-gradient(var(--paper-2) 1px, transparent 1px) 0 0 / 34px 34px,
+      linear-gradient(90deg, var(--paper-2) 1px, transparent 1px) 0 0 / 34px 34px,
+      var(--paper);
+  }
+  .house { width: 15px; height: 15px; background: #2e9e5b; border: 2px solid var(--ink); border-radius: 2px; }
+  .sq.v .house { width: 15px; }
+  .hotel { width: 34px; height: 18px; background: #c4372f; border: 2px solid var(--ink); border-radius: 2px; }
+  .sq.v .hotel { width: 18px; height: 34px; }
+  .owner { position: absolute; left: 0; right: 0; bottom: 0; height: 7%; }
+  .sq.v .owner { left: 0; top: 0; bottom: 0; right: auto; width: 7%; height: auto; }
+
+  /* Pions et dés, debout au-dessus du plateau */
+  .token {
+    position: absolute; width: 46px; height: 46px; border-radius: 50%;
+    border: 4px solid #fff; box-shadow: 0 14px 18px rgba(0,0,0,.45);
+    display: grid; place-items: center; color: #fff; font-weight: 900; font-size: 20px;
+  }
+  .die {
+    position: absolute; width: 96px; height: 96px; background: #fff;
+    border: 4px solid var(--ink); border-radius: 20px;
+    box-shadow: 0 7px 0 var(--ink), 0 30px 40px rgba(0,0,0,.45);
+    display: grid; grid-template: repeat(3, 1fr) / repeat(3, 1fr); padding: 13px;
+  }
+  .die i { width: 18px; height: 18px; border-radius: 50%; background: var(--ink); place-self: center; }
+
+  /* ---- Titre ---- */
+  .copy { position: absolute; left: 84px; top: 0; bottom: 0; display: flex; flex-direction: column; justify-content: center; width: 600px; }
+  .stamp {
+    align-self: flex-start;
+    font-weight: 900; font-size: 112px; letter-spacing: -0.035em; line-height: .9;
+    color: var(--paper);
+    padding: 14px 34px 22px;
+    border: 9px solid var(--paper);
+    border-radius: 18px;
+    box-shadow: inset 0 0 0 6px var(--table), inset 0 0 0 10px var(--paper);
+    transform: rotate(-4deg);
+    background: var(--table);
+  }
+  .tagline { margin-top: 44px; font-size: 40px; font-weight: 800; line-height: 1.12; letter-spacing: -0.015em; max-width: 520px; }
+  .tagline .money { color: var(--gold); }
+  .meta { margin-top: 20px; font-size: 22px; font-weight: 600; color: #a9bfd3; }
+</style>
+</head>
+<body>
+<div class="banner">
+  <div class="scene">
+    <div class="board">
+      <!-- rangée du haut (côté visible) -->
+      <div class="sq corner">Parc<br>gratuit</div>
+      <div class="sq"><div class="band" style="background:#e0312f"><span class="house"></span><span class="house"></span></div><span class="owner" style="background:#e63946"></span></div>
+      <div class="sq"><div class="band" style="background:#e0312f"><span class="house"></span><span class="house"></span></div><span class="owner" style="background:#e63946"></span></div>
+      <div class="sq"><div class="band" style="background:#e0312f"><span class="house"></span><span class="house"></span><span class="house"></span></div><span class="owner" style="background:#e63946"></span></div>
+      <div class="sq"><div class="band" style="background:#f5d300"></div></div>
+      <div class="sq"><div class="band" style="background:#f5d300"><span class="hotel"></span></div><span class="owner" style="background:#1d7bd8"></span></div>
+      <!-- colonne de gauche -->
+      <div class="sq v" style="grid-area:2/1"><div class="band" style="background:#f39a2b"><span class="house"></span></div><span class="owner" style="background:#2a9d58"></span></div>
+      <div class="sq v" style="grid-area:3/1"><div class="band" style="background:#f39a2b"><span class="house"></span></div><span class="owner" style="background:#2a9d58"></span></div>
+      <div class="sq v" style="grid-area:4/1"><div class="band" style="background:#f39a2b"><span class="house"></span></div><span class="owner" style="background:#2a9d58"></span></div>
+      <div class="sq v" style="grid-area:5/1"></div>
+      <div class="sq v" style="grid-area:6/1"><div class="band" style="background:#d9468f"></div></div>
+      <div class="center"></div>
+    </div>
+  </div>
+
+  <span class="token" style="background:#e63946; left: 812px; top: 128px;">C</span>
+  <span class="token" style="background:#1d7bd8; left: 1016px; top: 236px;">H</span>
+  <span class="token" style="background:#2a9d58; left: 742px; top: 330px;">M</span>
+
+  <div class="die" style="left: 900px; top: 400px; transform: rotate(-14deg);"><i style="grid-area:1/1"></i><i style="grid-area:1/3"></i><i style="grid-area:2/2"></i><i style="grid-area:3/1"></i><i style="grid-area:3/3"></i></div>
+  <div class="die" style="left: 1030px; top: 452px; transform: rotate(11deg);"><i style="grid-area:1/1"></i><i style="grid-area:1/3"></i><i style="grid-area:2/1"></i><i style="grid-area:2/3"></i><i style="grid-area:3/1"></i><i style="grid-area:3/3"></i></div>
+
+  <div class="copy">
+    <div class="stamp">CHADPOLY</div>
+    <p class="tagline">Achetez les rues. Construisez des hôtels. Ruinez vos amis.</p>
+    <p class="meta">Jeu de plateau, de 2 à 6 joueurs, dans le navigateur</p>
+  </div>
+</div>
+</body>
+</html>

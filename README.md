@@ -1,10 +1,12 @@
+![CHADPOLY](docs/banniere.png)
+
 # CHADPOLY
 
 Jeu de plateau immobilier qui se joue dans le navigateur : achetez des rues, construisez maisons et hôtels, échangez avec vos adversaires et ruinez-les. De 2 à 6 joueurs, humains (sur le même écran) ou contrôlés par l’ordinateur.
 
 Aucune dépendance, aucune compilation : du HTML, du CSS et du JavaScript (modules ES).
 
-![CHADPOLY](docs/apercu.png)
+![Une partie en cours](docs/apercu.png)
 
 ## Jouer
 
