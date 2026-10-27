@@ -1,4 +1,4 @@
-![CHADPOLY](docs/banniere.png)
+![CHADPOLY](cover.png)
 
 # CHADPOLY
 
