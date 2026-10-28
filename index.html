@@ -31,6 +31,7 @@
       <header class="side-head">
         <button class="btn ghost" id="newGameBtn" type="button">Nouvelle partie</button>
         <button class="btn ghost" id="rulesBtn" type="button">Règles</button>
+        <span class="net-info" id="netInfo" hidden></span>
       </header>
       <section aria-label="Joueurs" id="players" class="players"></section>
       <section class="log-wrap" aria-label="Journal de la partie">
@@ -42,9 +43,14 @@
 
   <!-- Configuration de la partie -->
   <dialog id="setupDialog" class="dialog setup">
-    <form method="dialog" id="setupForm">
-      <h2 class="dialog-title">Nouvelle partie</h2>
-      <p class="hint">De 2 à 6 joueurs. Chacun commence avec 1 500 €.</p>
+    <h2 class="dialog-title">Nouvelle partie</h2>
+    <div class="tabs" role="tablist" aria-label="Façon de jouer">
+      <button type="button" class="tab" role="tab" id="tabLocal" aria-controls="setupForm" aria-selected="true">Sur cet écran</button>
+      <button type="button" class="tab" role="tab" id="tabOnline" aria-controls="onlinePanel" aria-selected="false">En ligne</button>
+    </div>
+    <div id="onlinePanel" role="tabpanel" aria-labelledby="tabOnline" hidden></div>
+    <form method="dialog" id="setupForm" role="tabpanel" aria-labelledby="tabLocal">
+      <p class="hint">De 2 à 6 joueurs sur le même appareil, chacun son tour. Chacun commence avec 1 500 €.</p>
       <div id="setupPlayers" class="setup-players"></div>
       <div class="row">
         <button type="button" class="btn ghost" id="addPlayer">Ajouter un joueur</button>
@@ -95,11 +101,14 @@
       <li>Passer par la case Départ rapporte 200 €.</li>
       <li>À court d’argent ? Vendez des bâtiments (moitié prix) ou hypothéquez (moitié du prix d’achat). Lever une hypothèque coûte 10 % de plus.</li>
       <li>Échangez des propriétés et de l’argent avec les autres joueurs pendant votre tour.</li>
+      <li>En ligne : l’hôte crée la partie et envoie le lien ou le code à ses amis. Chacun joue depuis son appareil. L’hôte doit garder la page ouverte jusqu’à la fin.</li>
       <li>Si vous ne pouvez plus payer, c’est la faillite : vos biens vont à votre créancier.</li>
     </ul>
     <p class="hint">Cliquez sur une case du plateau pour voir sa fiche. La partie est sauvegardée automatiquement dans ce navigateur.</p>
     <form method="dialog" class="dialog-actions"><button class="btn primary">Compris</button></form>
   </dialog>
+
+  <div class="net-banner" id="netBanner" role="status" hidden></div>
 
   <script type="module" src="js/ui.js"></script>
 </body>

@@ -226,7 +226,8 @@ button, select, input { font: inherit; }
 
 /* ---------- Panneau latéral ---------- */
 .side { display: flex; flex-direction: column; gap: 16px; max-height: calc(100vh - 48px); position: sticky; top: 24px; }
-.side-head { display: flex; gap: 8px; }
+.side-head { display: flex; flex-wrap: wrap; gap: 8px; }
+.side-head .btn { white-space: nowrap; }
 .side h2 { font-family: var(--font-display); font-weight: 500; font-size: 1.1rem; margin: 0 0 6px; }
 
 .players { display: flex; flex-direction: column; gap: 10px; }
@@ -315,6 +316,42 @@ button, select, input { font: inherit; }
 
 .winner-title { font-family: var(--font-display); font-weight: 800; font-size: max(18px, 3cqw); margin: 0; }
 
+/* ---------- Mode en ligne ---------- */
+.tabs { display: flex; gap: 4px; background: var(--paper-2); padding: 4px; border-radius: var(--radius); margin: 10px 0 14px; }
+.tab { flex: 1; border: 0; background: transparent; padding: .5em; border-radius: 4px; font-weight: 700; color: var(--ink-soft); cursor: pointer; }
+.tab[aria-selected="true"] { background: #fff; color: var(--ink); box-shadow: 0 1px 0 var(--line), 0 0 0 1px var(--line); }
+.tab:disabled { cursor: not-allowed; opacity: .5; }
+.online-choice { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 14px; }
+.choice-box { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 12px; display: flex; flex-direction: column; gap: 8px; }
+.choice-box h3 { margin: 0; font-size: 1rem; }
+.choice-box .hint { margin: 0; font-size: .9rem; }
+.choice-box .field { margin-top: 0; }
+.choice-box .btn { margin-top: auto; }
+#onCode { text-transform: uppercase; letter-spacing: .15em; font-weight: 700; }
+.code-box { background: #fff; border: 2px dashed var(--ink); border-radius: var(--radius); padding: 12px; text-align: center; }
+.code-box .hint { margin: 0; }
+.code-box .hint.small { font-size: .85rem; margin-top: 8px; }
+.code { display: block; font-family: var(--font-display); font-weight: 800; font-size: 2.6rem; letter-spacing: .14em; color: var(--table); line-height: 1.15; }
+.code-box .row { justify-content: center; margin: 6px 0 0; }
+.lobby-list { list-style: none; padding: 0; margin: 14px 0 6px; display: grid; gap: 6px; }
+.lobby-list li { display: flex; align-items: center; gap: 8px; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 6px 10px; }
+.lobby-list .dot { width: 14px; height: 14px; border-radius: 50%; background: var(--c); border: 2px solid var(--ink); flex: none; }
+.lobby-list .who { flex: 1; font-weight: 700; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+.lobby-list .tag { color: var(--ink-soft); font-size: .88rem; font-weight: 400; }
+.lobby-list .icon-btn { padding: 0 4px; line-height: 1; }
+.connecting { font-weight: 700; }
+.connecting::after { content: ''; display: inline-block; width: .8em; height: .8em; margin-left: .5em; border: 2px solid var(--ink); border-right-color: transparent; border-radius: 50%; animation: spin .8s linear infinite; vertical-align: -.1em; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.net-info { flex-basis: 100%; font-size: .9rem; color: #a9bfd3; }
+.net-banner {
+  position: fixed; left: 50%; bottom: 20px; transform: translateX(-50%); z-index: 10;
+  background: var(--ink); color: #fff; padding: 10px 16px; border-radius: var(--radius);
+  box-shadow: 0 10px 30px rgba(0,0,0,.4); max-width: calc(100vw - 32px); font-weight: 700;
+}
+.net-banner.error { background: var(--danger); }
+.you-tag { font-weight: 400; color: var(--ink-soft); }
+.player .btn.small { margin-top: 8px; }
+
 /* ---------- Responsive ---------- */
 @media (max-width: 960px) {
   .table { grid-template-columns: 1fr; padding: 12px; gap: 16px; }
@@ -329,6 +366,8 @@ button, select, input { font: inherit; }
   .message { max-width: 100%; }
   .actions .btn { padding: .4em .7em; font-size: .85rem; }
   .trade-cols { grid-template-columns: 1fr; }
+  .online-choice { grid-template-columns: 1fr; }
+  .side-head { flex-wrap: wrap; }
 }
 
 @media (prefers-reduced-motion: reduce) {
